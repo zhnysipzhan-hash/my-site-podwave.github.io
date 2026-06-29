@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}{{ podcast.title }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-4 text-center mb-4">
+            <div class="podcast-cover-lg mx-auto d-flex align-items-center justify-content-center rounded-3 shadow">
+                <i class="bi bi-headphones display-1 text-white"></i>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <span class="badge bg-primary mb-2">{{ podcast.category_name or 'Жалпы' }}</span>
+            <h1 class="fw-bold">{{ podcast.title }}</h1>
+            <p class="text-muted"><i class="bi bi-person"></i> {{ podcast.author_name }}</p>
+            <p>{{ podcast.description or 'Сипаттама жоқ' }}</p>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <h3 class="mb-4"><i class="bi bi-list-ul"></i> Эпизодтар ({{ episodes|length }})</h3>
+    {% if episodes %}
+    <div class="list-group">
+        {% for ep in episodes %}
+        <a href="{{ url_for('episode_detail', episode_id=ep.id) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            <div>
+                <h6 class="mb-1">{{ ep.title }}</h6>
+                <small class="text-muted">{{ ep.duration or '—' }} · {{ ep.views }} көру</small>
+            </div>
+            <i class="bi bi-play-circle fs-4 text-primary"></i>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info">Бұл подкаста әзірге мақұлданған эпизодтар жоқ.</div>
+    {% endif %}
+</div>
+{% endblock %}

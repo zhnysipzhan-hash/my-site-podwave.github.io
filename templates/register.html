@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Тіркелу{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow border-0">
+                <div class="card-body p-5">
+                    <h2 class="text-center mb-4"><i class="bi bi-person-plus"></i> Тіркелу</h2>
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label class="form-label">Пайдаланушы аты</label>
+                            <input type="text" name="username" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Құпия сөз</label>
+                            <input type="password" name="password" class="form-control" required minlength="6">
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Құпия сөзді растау</label>
+                            <input type="password" name="confirm_password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 mb-3">Тіркелу</button>
+                        <p class="text-center text-muted mb-0">
+                            Аккаунтыңыз бар ма? <a href="{{ url_for('login') }}">Кіру</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

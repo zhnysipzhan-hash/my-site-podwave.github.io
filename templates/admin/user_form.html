@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Өңдеу' if user else 'Қосу' }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow border-0">
+                <div class="card-body p-4">
+                    <h2 class="mb-4">{{ 'Пайдаланушыны өңдеу' if user else 'Жаңа пайдаланушы' }}</h2>
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label class="form-label">Пайдаланушы аты</label>
+                            <input type="text" name="username" class="form-control" value="{{ user.username if user else '' }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" value="{{ user.email if user else '' }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Рөл</label>
+                            <select name="role" class="form-select" required>
+                                {% for key, label in roles.items() %}
+                                <option value="{{ key }}" {% if user and user.role == key %}selected{% endif %}>{{ label }} ({{ key }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Құпия сөз{% if user %} <small class="text-muted">(бос қалдырсаңыз, өзгертілмейді)</small>{% endif %}</label>
+                            <input type="password" name="password" class="form-control" {% if not user %}required{% endif %}>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">Сақтау</button>
+                            <a href="{{ url_for('admin_users') }}" class="btn btn-outline-secondary">Артқа</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}404 — Табылмады{% endblock %}
+{% block content %}
+<div class="container text-center py-5">
+    <i class="bi bi-question-circle display-1 text-muted"></i>
+    <h1 class="mt-3">404 — Бет табылмады</h1>
+    <p class="text-muted">Сұраған ресурс жоқ немесе жойылған.</p>
+    <a href="{{ url_for('index') }}" class="btn btn-primary">Басты бетке</a>
+</div>
+{% endblock %}

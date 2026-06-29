@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Эпизод жүктеу{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="card shadow border-0">
+                <div class="card-body p-4">
+                    <h2 class="mb-4"><i class="bi bi-cloud-upload"></i> Жаңа эпизод жүктеу</h2>
+
+                    {% if not podcasts %}
+                    <div class="alert alert-warning">
+                        Алдымен <a href="{{ url_for('employee_dashboard') }}">басқару панелінен</a> подкаст арнасын құрыңыз.
+                    </div>
+                    {% else %}
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label">Подкаст арнасы</label>
+                            <select name="podcast_id" class="form-select" required>
+                                {% for p in podcasts %}
+                                <option value="{{ p.id }}">{{ p.title }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Эпизод атауы</label>
+                            <input type="text" name="title" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Сипаттама</label>
+                            <textarea name="description" class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Ұзақтығы (мыс: 45:30)</label>
+                            <input type="text" name="duration" class="form-control" placeholder="00:00">
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Аудио файлы (mp3, wav, ogg)</label>
+                            <input type="file" name="audio_file" class="form-control" accept="audio/*">
+                        </div>
+                        <div class="alert alert-info small">
+                            <i class="bi bi-info-circle"></i> Жүктелген эпизод модератор тексеруінен өтеді.
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">Жүктеу</button>
+                            <a href="{{ url_for('employee_dashboard') }}" class="btn btn-outline-secondary">Артқа</a>
+                        </div>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
