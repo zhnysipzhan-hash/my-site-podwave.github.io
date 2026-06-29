@@ -1,0 +1,91 @@
+:root {
+    --podwave-primary: #6c5ce7;
+    --podwave-dark: #2d3436;
+    --podwave-gradient: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 50%, #74b9ff 100%);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+}
+
+.hero-section {
+    background: var(--podwave-gradient);
+}
+
+.section-title {
+    font-weight: 700;
+    color: var(--podwave-dark);
+}
+
+.podcast-cover {
+    height: 180px;
+    background: var(--podwave-gradient);
+    border-radius: 0.375rem 0.375rem 0 0;
+}
+
+.podcast-cover-lg {
+    width: 220px;
+    height: 220px;
+    background: var(--podwave-gradient);
+}
+
+.podcast-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.podcast-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.15) !important;
+}
+
+.category-card .card:hover {
+    background-color: #f0eeff;
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
+}
+
+.trending-img {
+    height: 160px;
+    object-fit: cover;
+}
+
+.stat-card {
+    transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: scale(1.03);
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+}
+
+.btn-primary {
+    background-color: var(--podwave-primary);
+    border-color: var(--podwave-primary);
+}
+
+.btn-primary:hover {
+    background-color: #5b4cdb;
+    border-color: #5b4cdb;
+}
+
+.badge.bg-primary {
+    background-color: var(--podwave-primary) !important;
+}
+
+audio {
+    border-radius: 8px;
+}
+
+.list-group-item-action:hover {
+    background-color: #f0eeff;
+}
+
+footer {
+    margin-top: auto;
+}
